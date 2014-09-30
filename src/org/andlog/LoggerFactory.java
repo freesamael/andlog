@@ -9,23 +9,10 @@ package org.andlog;
 public interface LoggerFactory {
 
     /**
-     * Create a {@link Logger} for the given {@code object}.
+     * Create a {@link Logger}.
      * 
-     * @param obj {@link Object} of which the {@link Logger} works on. Depending
-     *            on the implementation, the object could be used to generate
-     *            the log tag, prefix or other values in the log.
      * @return {@link Logger}
      */
-    public abstract Logger create(Object obj);
-
-    /**
-     * Create a {@link Logger} for the given {@code clazz}.
-     * 
-     * @param cls {@link Class} of which the {@link Logger} works on. Depending
-     *            on the implementation, the class could be used to generate the
-     *            log tag, prefix or other values in the log.
-     * @return {@link Logger}
-     */
-    public abstract Logger create(Class<?> cls);
+    public Logger create();
 
 }

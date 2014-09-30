@@ -18,6 +18,18 @@ import org.andlog.formatter.ThrowableFormatter;
  */
 public class VerboseLoggerFactory extends SimpleLoggerFactory {
 
+    public VerboseLoggerFactory(Object obj) {
+        super(obj);
+    }
+
+    public VerboseLoggerFactory(Class<?> cls) {
+        super(cls);
+    }
+
+    public VerboseLoggerFactory(String tag) {
+        super(tag);
+    }
+
     @Override
     public Builder getBuilder() {
         return new Builder(true /* extractMethodName */, new Formatter[] {

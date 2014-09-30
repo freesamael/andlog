@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="andlog-custom-rules" default="help">
+
+    <!-- Import Android custom ant tasks. -->
+    <path id="android.antlibs">
+        <pathelement path="${sdk.dir}/tools/lib/ant-tasks.jar" />
+    </path>
+    <taskdef resource="anttasks.properties" classpathref="android.antlibs" />
+
+    <!-- Package the built binaries. -->
+    <target name="package"
+            description="Package the newly built binaries. Must be used in conjunction with a build target (debug/release).">
+
+        <!-- Get version name from AndroidManifest.xml. -->
+        <xpath input="AndroidManifest.xml"
+            expression="/manifest/@android:versionName"
+            output="version.name"
+            default="unknown"/>
+
+        <!-- Rename the built jar. -->
+        <move tofile="${out.dir}/andlog-${version.name}.jar" file="${out.dir}/classes.jar" />
+
+    </target>
+
+</project>
