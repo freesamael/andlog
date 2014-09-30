@@ -14,9 +14,9 @@ import android.text.TextUtils;
  * @author samael_wang
  */
 public class SimpleLoggerFactory implements LoggerFactory {
-    protected static final String ANONYMOUS = "Anonymous";
-    private static final int LOG_TAG_MAX = 23;
-    private String mTag;
+    public static final String ANONYMOUS = "Anonymous";
+    public static final int LOG_TAG_MAX = 23;
+    protected String mTag;
 
     /**
      * Construct a {@link SimpleLoggerFactory} which uses the given {@code obj}
