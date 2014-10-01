@@ -72,8 +72,9 @@ public class Builder {
                     : new StringBuilder(prefix).append(SEPARATOR);
 
             // Append method name.
+
             if (mExtractMethodName)
-                sb.append(getStackTraceElement().getMethodName()).append(SEPARATOR);
+                sb.append(getStackTraceElement().getMethodName()).append("()").append(SEPARATOR);
 
             // Append formatted messages from objects.
             for (Object obj : objs)
@@ -102,16 +103,28 @@ public class Builder {
         // The code snippet comes from java.util.logging.LogRecord.
         boolean sawLogger = false;
         for (StackTraceElement element : new Throwable().getStackTrace()) {
-            String current = element.getClassName();
-            if (current.startsWith(Logger.class.getName())) {
+            Class<?> current = null;
+            try {
+                current = Class.forName(element.getClassName());
+            } catch (ClassNotFoundException e) {
+                /*
+                 * It should never happen. The class exists in the stack trace
+                 * must able to be found by the class loader.
+                 */
+                throw new IllegalStateException(e.getMessage(), e);
+            }
+            if (Logger.class.isAssignableFrom(current)) {
                 sawLogger = true;
             } else if (sawLogger) {
                 return element;
             }
         }
 
-        throw new IllegalStateException(
-                "new Throwable().getStackTrace() returns null or empty stack.");
+        /*
+         * It should never happen as the caller of the logger must also be in
+         * the stack trace.
+         */
+        throw new IllegalStateException("Unable to find element the logger works on.");
     }
 
 }
