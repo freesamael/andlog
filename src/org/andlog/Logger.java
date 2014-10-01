@@ -34,7 +34,22 @@ public class Logger {
     public void verbose(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.VERBOSE)) {
             String msg = mBuilder.build(mPrefix, objs);
-            if (!TextUtils.isEmpty(msg)) 
+            if (!TextUtils.isEmpty(msg))
+                Log.v(mTag, msg);
+        }
+    }
+
+    /**
+     * Log a {@link Log#VERBOSE} level message with no objects. Only print if
+     * the logger has prefix, or log method name is enabled. It's mainly used
+     * for showing method name.
+     * 
+     * @see Log#v(String, String)
+     */
+    public void verbose() {
+        if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.VERBOSE)) {
+            String msg = mBuilder.build(mPrefix);
+            if (!TextUtils.isEmpty(msg))
                 Log.v(mTag, msg);
         }
     }
@@ -48,7 +63,22 @@ public class Logger {
     public void debug(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.DEBUG)) {
             String msg = mBuilder.build(mPrefix, objs);
-            if (!TextUtils.isEmpty(msg)) 
+            if (!TextUtils.isEmpty(msg))
+                Log.d(mTag, msg);
+        }
+    }
+
+    /**
+     * Log a {@link Log#DEBUG} level message with no objects. Only print if the
+     * logger has prefix, or log method name is enabled. It's mainly used for
+     * showing method name.
+     * 
+     * @see Log#d(String, String)
+     */
+    public void debug() {
+        if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.DEBUG)) {
+            String msg = mBuilder.build(mPrefix);
+            if (!TextUtils.isEmpty(msg))
                 Log.d(mTag, msg);
         }
     }
@@ -62,7 +92,7 @@ public class Logger {
     public void info(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.INFO)) {
             String msg = mBuilder.build(mPrefix, objs);
-            if (!TextUtils.isEmpty(msg)) 
+            if (!TextUtils.isEmpty(msg))
                 Log.i(mTag, msg);
         }
     }
@@ -76,7 +106,7 @@ public class Logger {
     public void warning(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.WARN)) {
             String msg = mBuilder.build(mPrefix, objs);
-            if (!TextUtils.isEmpty(msg)) 
+            if (!TextUtils.isEmpty(msg))
                 Log.w(mTag, msg);
         }
     }
@@ -90,7 +120,7 @@ public class Logger {
     public void error(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.ERROR)) {
             String msg = mBuilder.build(mPrefix, objs);
-            if (!TextUtils.isEmpty(msg)) 
+            if (!TextUtils.isEmpty(msg))
                 Log.e(mTag, msg);
         }
     }
@@ -104,9 +134,9 @@ public class Logger {
     public void fatal(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.ASSERT)) {
             String msg = mBuilder.build(mPrefix, objs);
-            if (!TextUtils.isEmpty(msg)) 
+            if (!TextUtils.isEmpty(msg))
                 Log.wtf(mTag, msg);
         }
     }
-    
+
 }
