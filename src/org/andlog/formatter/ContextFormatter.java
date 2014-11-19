@@ -16,8 +16,8 @@ public class ContextFormatter implements Formatter {
     @Override
     public boolean format(Builder builder, StringBuilder sb, Object obj) {
         if (obj instanceof Context) {
-            sb.append(obj.getClass().getSimpleName()).append("{")
-                    .append(Integer.toHexString(obj.hashCode())).append("}");
+            sb.append(obj.getClass().getSimpleName()).append('{')
+                    .append(Integer.toHexString(obj.hashCode())).append('}');
             return true;
         }
 

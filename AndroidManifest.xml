@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.andlog"
-    android:versionCode="10004"
-    android:versionName="1.0.4-develop" >
+    android:versionCode="10005"
+    android:versionName="1.0.5-develop" >
 
     <uses-sdk
         android:minSdkVersion="10"

@@ -1,8 +1,7 @@
 
 package org.andlog.formatter;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
 
 import org.andlog.Builder;
 
@@ -20,12 +19,28 @@ public class BundleFormatter implements Formatter {
         if (obj instanceof Bundle) {
             Bundle bundle = (Bundle) obj;
 
-            // Use Map.toString() to extract the content of the Bundle.
-            Map<String, Object> map = new HashMap<String, Object>();
-            for (String key : bundle.keySet()) {
-                map.put(key, bundle.get(key));
+            // The extraction resembles Map.toString() implementation.
+            if (bundle.isEmpty()) {
+                sb.append("Bundle {}");
+            } else {
+                sb.append("Bundle {");
+                Iterator<String> iter = bundle.keySet().iterator();
+                while (iter.hasNext()) {
+                    String key = iter.next();
+                    sb.append(key);
+                    Object value = bundle.get(key);
+                    sb.append('=');
+                    if (value != this) {
+                        builder.format(sb, value);
+                    } else {
+                        sb.append("(this Bundle)");
+                    }
+                    if (iter.hasNext()) {
+                        sb.append(", ");
+                    }
+                }
+                sb.append('}');
             }
-            sb.append(map.toString());
 
             return true;
         }

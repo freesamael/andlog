@@ -31,6 +31,7 @@ public class Logger {
      * @param objs {@link Object}s to log.
      * @see Log#v(String, String)
      */
+    @SuppressWarnings("unused")
     public void verbose(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.VERBOSE)) {
             String msg = mBuilder.build(mPrefix, objs);
@@ -46,6 +47,7 @@ public class Logger {
      * 
      * @see Log#v(String, String)
      */
+    @SuppressWarnings("unused")
     public void verbose() {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.VERBOSE)) {
             String msg = mBuilder.build(mPrefix);
@@ -60,6 +62,7 @@ public class Logger {
      * @param objs {@link Object}s to log.
      * @see Log#d(String, String)
      */
+    @SuppressWarnings("unused")
     public void debug(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.DEBUG)) {
             String msg = mBuilder.build(mPrefix, objs);
@@ -75,6 +78,7 @@ public class Logger {
      * 
      * @see Log#d(String, String)
      */
+    @SuppressWarnings("unused")
     public void debug() {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.DEBUG)) {
             String msg = mBuilder.build(mPrefix);
@@ -89,6 +93,7 @@ public class Logger {
      * @param objs {@link Object}s to log.
      * @see Log#i(String, String)
      */
+    @SuppressWarnings("unused")
     public void info(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.INFO)) {
             String msg = mBuilder.build(mPrefix, objs);
@@ -103,6 +108,7 @@ public class Logger {
      * @param objs {@link Object}s to log.
      * @see Log#w(String, String)
      */
+    @SuppressWarnings("unused")
     public void warning(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.WARN)) {
             String msg = mBuilder.build(mPrefix, objs);
@@ -117,6 +123,7 @@ public class Logger {
      * @param objs {@link Object}s to log.
      * @see Log#e(String, String)
      */
+    @SuppressWarnings("unused")
     public void error(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.ERROR)) {
             String msg = mBuilder.build(mPrefix, objs);
@@ -131,6 +138,7 @@ public class Logger {
      * @param objs {@link Object}s to log.
      * @see Log#wtf(String, String)
      */
+    @SuppressWarnings("unused")
     public void fatal(Object... objs) {
         if (BuildConfig.DEBUG || Log.isLoggable(mTag, Log.ASSERT)) {
             String msg = mBuilder.build(mPrefix, objs);
