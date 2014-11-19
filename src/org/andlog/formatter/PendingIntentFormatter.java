@@ -28,9 +28,9 @@ public class PendingIntentFormatter implements Formatter {
 
             // Format the intent if possible.
             if (intent != null) {
-                sb.append("PendingIntent{");
+                sb.append("PendingIntent {");
                 builder.format(sb, intent);
-                sb.append(" }");
+                sb.append('}');
             } else {
                 sb.append(obj.toString());
             }

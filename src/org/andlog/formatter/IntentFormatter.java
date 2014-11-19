@@ -17,7 +17,7 @@ public class IntentFormatter implements Formatter {
     @Override
     public boolean format(Builder builder, StringBuilder sb, Object obj) {
         if (obj instanceof Intent) {
-            StringBuilder isb = new StringBuilder("Intent { ");
+            StringBuilder isb = new StringBuilder("Intent {");
 
             /*
              * Try to use hidden method: public void toShortString(StringBuilder
@@ -34,7 +34,7 @@ public class IntentFormatter implements Formatter {
             } catch (Exception e) {
                 isb.append(obj.toString());
             }
-            isb.append(" }");
+            isb.append('}');
 
             // Format extras.
             int eidx = isb.indexOf(INTENT_EXTRAS);
